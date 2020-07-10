@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
-    'crispy_forms', #third party django application pip install django-crispy-forms. Crispy forms allows us to put tags in our template that will style our forms in a bootstrap fashion
+    'crispy_forms',  # third party django application pip install django-crispy-forms. Crispy forms allows us to put tags in our template that will style our forms in a bootstrap fashion
 
 ]
 
@@ -123,10 +123,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #directory where uploaded media files will be saved
-MEDIA_URL = '/media/' #public url of the directory. How we'll access our midia through browser
+# directory where uploaded media files will be saved
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# public url of the directory. How we'll access our midia through browser
+MEDIA_URL = '/media/'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4' #because default is 2 but it is old
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # because default is 2 but it is old
 
-LOGIN_REDIRECT_URL = 'blog-home' #name of the path we gave to our home page
-LOGIN_URL = 'login' #name where gave our url pattern for login route
+LOGIN_REDIRECT_URL = 'blog-home'  # name of the path we gave to our home page
+LOGIN_URL = 'login'  # name where gave our url pattern for login route
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('YMUDEV_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('YMUDEV_PASS')
