@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = '#r@wh7r3@&rn^ai_vap0v1i95ps(%38isybk9eipr+y_vx3%9#'
-SECRET_KEY = os.environ.get('SECRET_KEY_DJANGO_COREY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -124,6 +124,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
 
 # directory where uploaded media files will be saved
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
