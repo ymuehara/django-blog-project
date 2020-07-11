@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = ['ymudevdjangocorey.herokuapp.com']
 
@@ -142,7 +142,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('YMUDEV_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('YMUDEV_PASS')
+EMAIL_HOST_PASSWORD = os.environ.get('YMUDEV_PASS2')
 
 
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
