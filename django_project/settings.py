@@ -25,7 +25,7 @@ SECRET_KEY = '#r@wh7r3@&rn^ai_vap0v1i95ps(%38isybk9eipr+y_vx3%9#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ymudevdjangocorey.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'crispy_forms',  # third party django application pip install django-crispy-forms. Crispy forms allows us to put tags in our template that will style our forms in a bootstrap fashion
-
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +140,15 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('YMUDEV_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('YMUDEV_PASS')
+
+
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_FILE_OVERWRITE = False  # if a user uploads a file with the same name as another file somebody else uploaded, we don't want the file to be overwriten. We want to rename with some characters appended to the end
+AWS_DEFAULT_ACL = None  # current default can cause some issues
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+############
